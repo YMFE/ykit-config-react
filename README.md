@@ -1,17 +1,60 @@
-#### ***文中链接各位根据自己项目对应修改***
---------------------------------------------------------------------------------
-#### **项目管理**：
-#### *sp*:(http://sp.corp.qunar.com/default.aspx)<br />
+# ykit-config-qunar
 
-#### *jira*:(http://task.corp.qunar.com/browse/)<br />
---------------------------------------------------------------------------------
-#### **发布相关**:
-#### *devbds*:(http://devbds.corp.qunar.com/jenkins/)<br />
-#### *bds*:(http://bds.corp.qunar.com/jenkins/)<br />
---------------------------------------------------------------------------------
-#### **质量管理**:
-#### *bugfree*:(http://svn.corp.qunar.com/bugfree)<br />
-#### *case*:(http://bugfree.corp.qunar.com/bugfree/index.php/case)<br />
---------------------------------------------------------------------------------
-#### **项目信息**:
-#### *wiki*:(http://wiki.corp.qunar.com/)<br />
+## Features
+
+- transpile ES6+, JSX 代码。
+- 通过 happypack 提升编译速度。
+- 初始脚手架(TODO)
+- hotload modules(TODO(。
+
+## 安装
+
+在项目中执行：
+
+```
+$ npm install ykit-config-react --save
+```
+
+## 插件配置详情
+
+```javascript
+{
+    module: {
+        loaders: baseConfig.module.loaders.concat([{
+            test: /\.(js|jsx)$/,
+            exclude: /(node_modules)/,
+            loaders: ['happypack/loader']
+        }])
+    },
+    plugins: baseConfig.plugins.concat([
+        new HappyPack({
+            loaders: [
+                {
+                    loader: require.resolve('babel-loader'),
+                    test: /\.(js|jsx)$/,
+                    exclude: /node_modules/,
+                    query: {
+                        cacheDirectory: true,
+                        presets: [
+                            'es2015',
+                            'es2017',
+                            'react',
+                            'stage-0',
+                            'stage-1',
+                            'stage-2',
+                        ],
+                        plugins: ['transform-runtime']
+                    }
+                }
+            ],
+            threads: 4,
+            verbose: false,
+            cacheContext: {
+                env: process.env.NODE_ENV
+            },
+            tempDir: path.join(cwd, 'node_modules/.happypack'),
+            cachePath: path.join(cwd, 'node_modules/.happypack/cache--[id].json')
+        })
+    ])
+}
+```
