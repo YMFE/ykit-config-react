@@ -2,10 +2,10 @@
 
 ## Features
 
-- transpile ES6+, JSX 代码。
-- 通过 happypack 提升编译速度。
+- transpile ES6+, JSX 代码
+- 通过 happypack 提升编译速度
 - 初始脚手架(TODO)
-- hotload modules(TODO(。
+- hotload modules(TODO)
 
 ## 安装
 
@@ -13,6 +13,15 @@
 
 ```
 $ npm install ykit-config-react --save
+```
+
+编辑 `ykit.js`，引入插件：
+
+```
+module.exports = {
+    plugins: ['react']
+    // ...
+};
 ```
 
 ## 插件配置详情
