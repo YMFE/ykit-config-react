@@ -1,4 +1,4 @@
-# ykit-config-qunar
+# ykit-config-react
 
 ## Features
 
