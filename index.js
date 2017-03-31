@@ -33,7 +33,7 @@ exports.config = function (options, cwd) {
         tempDir: path.join(cwd, 'node_modules/.happypack'),
         cachePath: path.join(cwd, 'node_modules/.happypack/cache--[id].json')
     };
-    happyPackConfig = options.modifyReactConfig(happyPackConfig);
+    happyPackConfig = options.modifyHappypack(happyPackConfig);
 
     extend(true, baseConfig, {
         module: {

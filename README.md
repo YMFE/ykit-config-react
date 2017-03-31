@@ -5,7 +5,6 @@
 - transpile ES6+, JSX 代码
 - 通过 happypack 提升编译速度
 - 初始脚手架(TODO)
-- hotload modules(TODO)
 
 ## 安装
 
@@ -21,6 +20,32 @@ $ npm install ykit-config-react --save
 module.exports = {
     plugins: ['react']
     // ...
+};
+```
+
+## 更改 happypack 配置
+
+由于插件内置 `happypack`，因此该它的编译 es6/react 配置需要调用 `modifyHappypack` 接口：
+
+```javascript
+module.exports = {
+    plugins: [
+        'qunar', {
+            // 通过对象的方式引入插件，可以传入 options
+            name: 'react',
+            options: {
+                // 更改 es6/react 配置
+                modifyHappypack: function(config) {
+                    // 通过 console.log(config) 可查看当前配置
+                    config.verbose = false;
+                    return config;
+                }
+            }
+        }
+    ],
+    config: {
+        // ...
+    }
 };
 ```
 
