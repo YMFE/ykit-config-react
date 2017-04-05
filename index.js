@@ -21,9 +21,7 @@ exports.config = function (options, cwd) {
                         'stage-1',
                         'stage-2',
                     ],
-                    plugins: ['transform-es2015-modules-simple-commonjs', ["transform-runtime", {
-                        "helpers": false,
-                    }]]
+                    plugins: ['transform-es2015-modules-simple-commonjs']
                 }
             }
         ],
