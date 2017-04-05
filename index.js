@@ -8,7 +8,7 @@ exports.config = function (options, cwd) {
     var happyPackConfig = {
         loaders: [
             {
-                loader: require.resolve('babel-loader'),
+                loader: 'babel-loader',
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 query: {
@@ -21,7 +21,9 @@ exports.config = function (options, cwd) {
                         'stage-1',
                         'stage-2',
                     ],
-                    plugins: ['transform-runtime']
+                    plugins: ['transform-es2015-modules-simple-commonjs', ["transform-runtime", {
+                        "helpers": false,
+                    }]]
                 }
             }
         ],
