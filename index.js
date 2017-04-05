@@ -14,7 +14,7 @@ exports.config = function (options, cwd) {
                 query: {
                     cacheDirectory: true,
                     presets: [
-                        'es2015',
+                        ["es2015", {"loose": true}],
                         'es2017',
                         'react',
                         'stage-0',
