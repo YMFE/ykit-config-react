@@ -40,7 +40,7 @@ exports.config = function (options, cwd) {
             loaders: baseConfig.module.loaders.concat([{
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
-                loaders: ['happypack/loader']
+                loader: 'happypack/loader'
             }])
         },
         plugins: baseConfig.plugins.concat([
