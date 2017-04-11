@@ -2,8 +2,10 @@
 
 ## Features
 
-- transpile ES6+, JSX 代码
+- 编译 ES6+, JSX 代码（兼容至 IE8）
 - 通过 happypack 提升编译速度
+- 添加 babel-polyfill
+- 设置 react 环境变量
 - 初始脚手架(TODO)
 
 ## 安装
@@ -77,7 +79,7 @@ module.exports = {
                             'stage-1',
                             'stage-2',
                         ],
-                        plugins: ['transform-runtime']
+                        plugins: ['transform-es2015-modules-simple-commonjs']
                     }
                 }
             ],
