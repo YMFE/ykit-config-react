@@ -52,17 +52,4 @@ exports.config = function (options, cwd) {
             })
         ])
     });
-
-    var self = this;
-    this.applyBeforePack(function(callback) {
-        Object.keys(self.config.entry).map(function(entryName) {
-            var entryContent = self.config.entry[entryName];
-            if((path.extname(entryName) === '.js' || path.extname(entryName) === '.jsx')
-                && entryContent.indexOf('babel-polyfill') === -1) {
-                entryContent.unshift('babel-polyfill');
-                self.config.entry[entryName] = entryContent;
-            }
-        })
-        callback();
-    });
 };

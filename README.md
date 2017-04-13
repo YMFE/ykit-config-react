@@ -4,7 +4,6 @@
 
 - 编译 ES6+, JSX 代码（兼容至 IE8）
 - 通过 happypack 提升编译速度
-- 添加 babel-polyfill
 - 设置 react 环境变量
 - 初始脚手架(TODO)
 
@@ -25,7 +24,7 @@ module.exports = {
 };
 ```
 
-## 更改 happypack 配置
+## 如何更改配置？
 
 由于插件内置 `happypack`，因此该它的编译 es6/react 配置需要调用 `modifyHappypack` 接口：
 
@@ -51,7 +50,7 @@ module.exports = {
 };
 ```
 
-## 插件配置详情
+## 插件配置详情（仅供参考）
 
 ```javascript
 {
