@@ -24,6 +24,26 @@ module.exports = {
 };
 ```
 
+## babel-polyfill
+
+babel-polyfill 默认是没有引入的，需要根据项目需求手动引入。
+
+### 功能
+
+babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的API，比如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法（比如 Object.assign ）都不会转码。
+
+### 引入
+
+引入 babel-polyfill 需要在入口 js 头部，加入如下一行代码：
+
+```javasciprt
+import 'babel-polyfill';
+```
+
+<b class="ykit-tip">
+babel-polyfill 会增大 js 体积（压缩后 80k 左右），请根据项目需求选择是否引入。
+</b>
+
 ## 如何更改配置？
 
 由于插件内置 `happypack`，因此该它的编译 es6/react 配置需要调用 `modifyHappypack` 接口：
