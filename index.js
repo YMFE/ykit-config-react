@@ -8,7 +8,7 @@ exports.config = function (options, cwd) {
     var happyPackConfig = {
         loaders: [
             {
-                loader: 'babel-loader',
+                loader: require.resolve('babel-loader'),
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 query: {
@@ -40,7 +40,7 @@ exports.config = function (options, cwd) {
             loaders: baseConfig.module.loaders.concat([{
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
-                loader: 'happypack/loader'
+                loader: require.resolve('happypack/loader')
             }])
         },
         plugins: baseConfig.plugins.concat([
