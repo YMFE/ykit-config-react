@@ -2,49 +2,25 @@
 
 var path = require('path');
 var HappyPack = require('happypack');
+var es6Config = require('ykit-config-es6');
 
 exports.config = function (options, cwd) {
-    var baseConfig = this.config;
-    var happyPackConfig = {
-        loaders: [
-            {
-                loader: require.resolve('babel-loader'),
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                query: {
-                    cacheDirectory: true,
-                    presets: [
-                        ["es2015", {"loose": true}],
-                        'es2017',
-                        'react',
-                        'stage-0',
-                        'stage-1',
-                        'stage-2',
-                    ],
-                    plugins: ['transform-es2015-modules-simple-commonjs']
-                }
-            }
-        ],
-        threads: 4,
-        verbose: false,
-        cacheContext: {
-            env: process.env.NODE_ENV
-        },
-        tempDir: path.join(cwd, 'node_modules/.happypack'),
-        cachePath: path.join(cwd, 'node_modules/.happypack/cache--[id].json')
-    };
-    happyPackConfig = options.modifyHappypack ? options.modifyHappypack(happyPackConfig) : happyPackConfig;
+    var originModifyQuery = options.modifyQuery;
 
-    extend(true, baseConfig, {
-        module: {
-            loaders: baseConfig.module.loaders.concat([{
-                test: /\.(js|jsx)$/,
-                exclude: /(node_modules)/,
-                loader: require.resolve('happypack/loader')
-            }])
-        },
-        plugins: baseConfig.plugins.concat([
-            new HappyPack(happyPackConfig),
+    options.modifyQuery = function(defaultQuery) {
+        defaultQuery.presets.push('react');
+
+        if(typeof originModifyQuery === 'function') {
+            return originModifyQuery(defaultQuery);
+        } else {
+            return defaultQuery;
+        }
+    }
+
+    es6Config.config.call(this, options, cwd);
+
+    extend(true, this.config, {
+        plugins: this.config.plugins.concat([
             new this.webpack.DefinePlugin({
                 "process.env": {
                     NODE_ENV: JSON.stringify(this.env === 'prd' ? 'production' : 'dev')
