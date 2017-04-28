@@ -21,9 +21,23 @@ $ npm install ykit-config-react --save
 
 编辑 `ykit.js`，引入插件即可：
 
-```
+```javascript
 module.exports = {
     plugins: ['react']
+    // ...
+};
+```
+
+或者如果需要添加插件的选项，也可以传入一个对象：
+
+```javascript
+module.exports = {
+    plugins: [{
+        name: 'react',
+        options: {
+            // 插件选项
+        }
+    }]
     // ...
 };
 ```
@@ -48,6 +62,25 @@ import 'babel-polyfill';
 babel-polyfill 会增大 js 体积（压缩后 80k 左右），请根据项目需求选择是否引入。
 </b>
 
+## 兼容 ie8
+
+如果需要支持 ie8，则要指定 ie8 选项：
+
+```javascript
+module.exports = {
+    plugins: [{
+        name: 'react',
+        options: {
+            ie8: true
+        }
+    }]
+    // ...
+};
+```
+
+<b class="ykit-tip">
+react 和 react-dom 从 15 版本开始已经不支持 ie8，请确保项目中安装 react@0.14.8 以及 react-dom@0.14.8 版本。
+</b>
 
 ## 如何更改配置？
 

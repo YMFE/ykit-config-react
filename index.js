@@ -28,4 +28,25 @@ exports.config = function (options, cwd) {
             })
         ])
     });
+
+    if(options.ie8) {
+        var pkg = require(path.join(cwd, 'package.json'));
+        var reactVer = pkg.dependencies.react;
+        var reactDomVer = pkg.dependencies['react-dom'];
+
+        if(!reactVer || reactVer[0] !== '0') {
+            console.log('兼容 ie8 需要手动安装 react@0.14.8');
+            process.exit(0);
+        }
+
+        if(!reactDomVer || reactDomVer[0] !== '0') {
+            console.log('兼容 ie8 需要手动安装 react-dom@0.14.8');
+            process.exit(0);
+        }
+
+        this.config.module.postLoaders.push({
+            test: /\.(js|jsx)$/,
+            loader: 'es3ify-loader'
+        });
+    }
 };
