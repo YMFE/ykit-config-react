@@ -1,6 +1,6 @@
 {
   "name": "ykit-config-react",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "编译 ES6+ react 插件",
   "main": "index.js",
   "scripts": {
@@ -16,8 +16,8 @@
     "babel-preset-react": "^6.24.1",
     "es3ify-loader": "^0.2.0",
     "extend": "^3.0.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "15.4.2",
+    "react-dom": "15.4.2",
     "ykit-config-es6": "^0.4.0"
   }
 }
