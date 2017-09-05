@@ -9,17 +9,25 @@
 - 编译 ES6+, JSX 代码（兼容至 IE8）
 - 通过 happypack 提升编译速度
 - 设置 react 环境变量
-- 初始脚手架(TODO)
+- 初始脚手架
 
-## 安装
+## Usage
 
-在项目中执行：
+如果是新项目，在一个空的目录下执行：
+
+```shell
+ykit init react
+```
+
+会在当前目录下生成一个初始工程。
+
+如果是已有项目，在项目中执行：
 
 ```
 $ npm install ykit-config-react --save
 ```
 
-编辑 `ykit.js`，引入插件即可：
+然后编辑 `ykit.js` 引入插件：
 
 ```javascript
 module.exports = {
@@ -28,7 +36,7 @@ module.exports = {
 };
 ```
 
-或者如果需要添加插件的选项，也可以传入一个对象：
+或者如果需要添加选项，也可以采用传入对象的方式：
 
 ```javascript
 module.exports = {
@@ -41,10 +49,6 @@ module.exports = {
     // ...
 };
 ```
-
-## 示例
-
-查看：https://github.com/roscoe054/ykit-starter-react
 
 ## babel-polyfill
 
@@ -114,46 +118,6 @@ module.exports = {
 };
 ```
 
-## 插件内置 Webpack 配置（仅供参考）
+## 示例
 
-```javascript
-{
-    module: {
-        loaders: baseConfig.module.loaders.concat([{
-            test: /\.(js|jsx)$/,
-            exclude: /(node_modules)/,
-            loaders: ['happypack/loader']
-        }])
-    },
-    plugins: baseConfig.plugins.concat([
-        new HappyPack({
-            loaders: [
-                {
-                    loader: require.resolve('babel-loader'),
-                    test: /\.(js|jsx)$/,
-                    exclude: /node_modules/,
-                    query: {
-                        cacheDirectory: true,
-                        presets: [
-                            'es2015',
-                            'es2017',
-                            'react',
-                            'stage-0',
-                            'stage-1',
-                            'stage-2',
-                        ],
-                        plugins: ['transform-es2015-modules-simple-commonjs']
-                    }
-                }
-            ],
-            threads: 4,
-            verbose: false,
-            cacheContext: {
-                env: process.env.NODE_ENV
-            },
-            tempDir: path.join(cwd, 'node_modules/.happypack'),
-            cachePath: path.join(cwd, 'node_modules/.happypack/cache--[id].json')
-        })
-    ])
-}
-```
+查看：https://github.com/roscoe054/ykit-starter-react
