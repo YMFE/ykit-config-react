@@ -16,7 +16,7 @@
 如果是新项目，在一个空的目录下执行：
 
 ```shell
-ykit init react
+$ ykit init react
 ```
 
 会在当前目录下生成一个初始工程。
