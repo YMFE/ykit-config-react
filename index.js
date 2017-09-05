@@ -49,4 +49,9 @@ exports.config = function (options, cwd) {
             loader: 'es3ify-loader'
         });
     }
+
+    this.commands.push({
+        name: 'setup',
+        module: require('./commands/setup.js')
+    });
 };
