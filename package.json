@@ -1,6 +1,6 @@
 {
   "name": "ykit-config-react",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "编译 ES6+ react 插件",
   "main": "index.js",
   "scripts": {

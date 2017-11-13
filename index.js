@@ -23,7 +23,9 @@ exports.config = function (options, cwd) {
         plugins: this.config.plugins.concat([
             new this.webpack.DefinePlugin({
                 "process.env": {
-                    NODE_ENV: JSON.stringify(this.env === 'prd' ? 'production' : 'dev')
+                    NODE_ENV: JSON.stringify(
+                        this.env === 'prd' || this.env === 'beta' ? 'production' : 'dev'
+                    )
                 }
             })
         ])
