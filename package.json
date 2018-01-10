@@ -1,6 +1,6 @@
 {
   "name": "ykit-config-react",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "编译 ES6+ react 插件",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,6 @@
     "extend": "^3.0.0",
     "fs-extra": "^4.0.1",
     "simple-git": "^1.77.0",
-    "ykit-config-es6": "^3.1.0"
+    "ykit-config-es6": "^3.1.1"
   }
 }
