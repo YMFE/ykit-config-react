@@ -2,6 +2,7 @@
 
 var path = require('path');
 var fs = require('fs-extra');
+var execSync = require('child_process').execSync;
 var simpleGit = require('simple-git')();
 
 exports.usage = '初始化项目环境';
